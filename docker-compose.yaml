@@ -1,0 +1,14 @@
+version: "3.5"
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+  redisCommander:
+    image: rediscommander/redis-commander
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
